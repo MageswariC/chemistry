@@ -1,0 +1,51 @@
+<div>
+  <h2 class="head">Meterial Required</h2>
+  <hr />
+  <div class="container parentDiv">
+    <div>
+      <p class="heading">Animal</p>
+      <ul>
+        <li>Dog</li>
+      </ul>
+      <p class="heading">Equipemets</p>
+      <ul>
+        <ng-container *ngFor="let equipment of equipments">
+          <li (click)="openModal(equipment.image)">{{ equipment.name }}</li>
+        </ng-container>
+      </ul>
+    </div>
+    <div>
+      <p class="heading">Drug and Solution</p>
+      <div class="">
+        <ul class="drugSolution">
+          <ng-container *ngFor="let drugSoluction of drugSoluctions">
+            <li (click)="openModal('dog')">{{ drugSoluction.name }}</li>
+          </ng-container>
+        </ul>
+      </div>
+      <div class="blinkText">
+        <p>Click each Meterial to see the preview</p>
+        <p>Click eachdrug for more information</p>
+      </div>
+    </div>
+    <div>
+      <p class="heading">Anaesthetic Agent</p>
+      <ul>
+        <ng-container *ngFor="let anaestheticAgent of anaestheticAgents">
+          <li (click)="openModal('dog')">{{ anaestheticAgent.name }}</li>
+        </ng-container>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal" #modal>
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span #closeBtn (click)="closeBtn1()" class="close">&times;</span>
+      <img src='{{"../../../../../../assets/images/" + this.imagename + ".png" }}' />
+    </div>
+  </div>
+</div>

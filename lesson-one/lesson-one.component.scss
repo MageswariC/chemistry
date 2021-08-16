@@ -1,0 +1,40 @@
+@import '../../../../styles-variables';
+
+.hor-spacing {
+  margin-top: 30px;
+}
+
+.float-r {
+  float: right;
+}
+.header-color {
+  color: #3879b4;
+}
+
+
+
+.content {
+  ul > li {
+    margin-top: 10px;
+    list-style-image: url('../../../../assets/tick-box-16.png');
+  }
+}
+
+.mr-1 {
+  margin-right: 10px;
+}
+
+nav {
+  margin-bottom: 20px;
+
+  .mat-tab-link {
+    min-width: 120px;
+    padding: 0 15px;
+  }
+
+  @media (max-width: map-get($grid-breakpoints, md)) {
+    .mat-tab-link {
+      min-width: 0;
+    }
+  }
+}

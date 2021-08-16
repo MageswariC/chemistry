@@ -1,0 +1,44 @@
+
+.custumTabContent{
+    background: white;
+      height: 74vh;
+      // padding: 0px 9%;
+      border-bottom: 1px solid #dee2e6;
+      border-left: 1px solid #dee2e6;
+      border-right: 1px solid #dee2e6;
+  }
+  .custumViewSatge{
+    border: none;
+    height: auto;
+    position: relative;
+    margin: auto;
+    // border: 1px solid;
+    margin-top: 10px;
+    overflow: hidden;
+    min-height: 360px;
+  }
+  .nav-tabs .nav-link{
+    // background: #e68a00;
+    // color: white;
+    font-weight: 500;
+    background: #283593;
+    color: white;
+  }
+  .nav-tabs .nav-item{
+    margin-right: 6px;
+  }
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #283593;
+    background-color: #fff;
+    font-weight: 500;
+    border-top: 3px solid #283593;
+}
+.custumtabpane{
+  height: 100%;
+  position: relative;
+}
+
+.custumExperi{
+  position: relative;
+  height: 100%;
+}

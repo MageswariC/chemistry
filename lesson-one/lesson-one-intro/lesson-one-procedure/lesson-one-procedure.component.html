@@ -1,0 +1,20 @@
+<div class="procedureCon">
+    <div>
+        <h2 class="head">Procedure</h2>
+    </div>
+    <div>
+        <procedure-pill [pillhead] = 'pillhead' (activeIndex)="activeIndexPillHead($event)"
+        (isPause)="pauseControl($event)"></procedure-pill>
+    </div>
+</div>
+<hr>
+<div class="procedureContainer">
+    <div class="procedureList">
+        <ul *ngFor="let text of activeProcedureData?.procedureText">
+            <li>{{text}}</li>
+        </ul>
+    </div>
+    <div class="imageContainer" *ngFor="let text of activeProcedureData?.procedureImage">
+        <img/>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+.head{
+  padding-top: 22px;
+    margin-left: 10px;
+    color: #283593;  
+    font-size: 1.2rem;
+    h2{
+      color: #283593;  
+    }
+  }
+  .precautionContainer ul li{
+    margin: 27px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000a6;
+  }
+
+  .precautionContainer ul li::before {
+    content: "\2022";
+    color: #283593;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+  }

@@ -1,0 +1,177 @@
+<div class="con" *ngIf="!showHint">
+	<div class="canvasContainer">
+		<canvas #canvas id="canvas"></canvas>
+		<form class="slider" style="--min: 0; --max: 100; --val: 25">
+			<input type="range" [disabled]='injectActive' min="0" max="100" value="25" list="l" id="canvasScroller" />
+		</form>
+		<!-- <input type="range" id="canvasScroller" /> -->
+	</div>
+	<div class="drugDoseContainer">
+		<div class="innerTow">
+			<div>
+				<div class="dropup">
+					<button type="button" [disabled]='injectActive'
+						class="btn btn-secondary dropdown-toggle btnbtn drugDrop custom-button" data-toggle="dropdown">
+						{{drugName == '' ? 'Select a Procedure/Drug' : drugName}}</button>
+					<div class="dropdown-menu custumdrop">
+						<ng-container *ngFor="let drug of drugArray"> <a (click)="drugSelect(drug)"
+								class="dropdown-item">{{drug.drug_name}}</a> </ng-container>
+					</div>
+				</div>
+			</div>
+			<div>
+				<button type="button" *ngIf='showBtn' [disabled]='injectActive'
+					class="btn btn-secondary whitebtnbtn custom-button" (click)="injectDose()">{{btnValue}}</button>
+			</div>
+			<div class="dogNo">
+				<button type="button" class="btn btn-secondary btnbtn custom-button mr-2">Dog no {{dog &&dog.dogs ?
+					dog.dogs.length : 1}}</button>
+			</div>
+		</div>
+		<div class="labl" *ngIf='isAntAgo' style="padding-left: 19px; color:#283593"> Drug Selected: {{drugName}}
+		</div>
+		<div class="labl" *ngIf='isPro' style="padding-left: 19px; color:#283593"> Drug Selected: {{drugName}}
+		</div>
+		<div class="innerdrugDoseContainer" *ngIf='isAntAgo'>
+			<div>
+				<label class="labl">Dose to be Injected(ug/kg):</label>
+				<button type="button" [disabled]='injectActive' class="btn btn-secondary btnbtn custom-button btnoper"
+					(click)="doseIncreDecre('degre')">&minus;</button>
+				<input type="text" [disabled]='injectActive' class="inpt" [(ngModel)]='recommandedDose'>
+				<button type="button" [disabled]='injectActive' class="btn btn-secondary btnbtn custom-button btnoper"
+					(click)="doseIncreDecre('incre')">&#43;</button>
+			</div>
+			<div>
+				<label class="labl">Recommended Dose(ug/kg):</label>
+				<input type="text" [disabled]='injectActive' name="" class="inpt" value='{{recoDose}}' readonly>
+			</div>
+			<div>
+				<label class="labl">Range(ug/kg):</label>
+				<input type="text" [disabled]='injectActive' name="" class="inpt" value='{{range}}' readonly>
+			</div>
+			<div class="instBook" (click)="onInstBook()">
+				<img src='../../../../../../assets/images/instruction.png'>
+			</div>
+		</div>
+		<div *ngIf="isPro" style="padding-left: 19px;">
+			<label class="labl">Duration (Sec):</label>
+			<input type="text" [disabled]='injectActive' name="" class="inpt" value='{{recommandedDose}}' readonly>
+		</div>
+	</div>
+	<div class="btnsContainer">
+		<div>
+			<div class="blockerContainer">
+				<button type="button" [disabled]='injectActive' class="btn btn-secondary btnbtn custom-button"
+					(click)="blockerpopup()">Remove
+					Blocker</button>
+				<div class="blockerPopup" *ngIf="isBlockerpopup">
+					<span (click)="blockerpopup()" style="margin-right: 9px;" class="close">&times;</span>
+					<form class="blockerForm">
+						<div class="form-row">
+							<div class="form-group col-md-6 drugHeader">
+								Drug
+							</div>
+							<div class="form-group col-md-6 drugHeader">
+								Level(ug/kg)
+							</div>
+						</div>
+						<ng-container *ngFor="let antDrug of antagonistArray; let i = index">
+							<div class="form-row" style="margin-bottom: 5px; font-size: 13px;">
+								<div class="form-group col-md-6">
+									{{antDrug.drug_name}}
+								</div>
+								<div class="form-group col-md-5">
+									<input type="text" value={{antDrug.druglevel}} class="form-control custumInput"
+										readonly>
+								</div>
+								<div class="form-group col-md-1">
+									<label class="custom-checkbox">
+										<input type="checkbox" [disabled]='antDrug.druglevel==0'
+											[checked]='antDrug.isChecked' (change)="checkedBlocker($event, i)">
+										<span
+											[ngStyle]="{'cursor': antDrug.druglevel==0 ? 'not-allowed' :  'pointer'}"></span>
+									</label>
+								</div>
+							</div>
+						</ng-container>
+						<div style="color:#283593; font-size: 13px;">
+							Mark the blockers to be removed.
+						</div>
+					</form>
+					<div>
+						<button type="button" class="btn btn-secondary blockerBtn" [disabled]='removeAllBlr'
+							(click)="MarkedBlockerBtn('all')">Remove All Blockers</button>
+					</div>
+					<div>
+						<button type="button" class="btn btn-secondary blockerBtn" [disabled]='removeMarkedBlr'
+							(click)="MarkedBlockerBtn('marked')">Remove Marked Blockers</button>
+					</div>
+
+				</div>
+			</div>
+			<button type="button" class="btn btn-secondary whitebtnbtn custom-button" (click)='injectSalain()'
+				[disabled]='injectActive'>Inject
+				Saline</button>
+		</div>
+		<div>
+			<button type="button" class="btn btn-secondary whitebtnbtn custom-button" (click)="printCanvas()"
+				[disabled]='injectActive'>Print
+				Graph</button>
+			<button type="button" class="btn btn-secondary whitebtnbtn custom-button" (click)="saveImage()"
+				[disabled]='injectActive'>Save</button>
+			<input type="file" class='custom-file-inputt' style="width:47.5px; margin-left: 9px;"
+				[disabled]='injectActive' (change)="handleUpload($event)">
+			<!-- <button type="button" >View</button> -->
+		</div>
+		<div>
+			<button type="button" class="btn btn-secondary whitebtnbtn custom-button" (click)="addnewDog()"
+				[disabled]='newdogActive'>New Dog</button>
+			<button type="button" class="btn btn-secondary whitebtnbtn custom-button" (click)="openModal('dog')"
+				[disabled]='injectActive'>Set
+				Up</button>
+		</div>
+	</div>
+</div>
+<div class="hintDiv" *ngIf="showHint">
+	<h2 class="head">Instructions <span (click)="closeBtn()" class="instclose">&times;</span></h2>
+	<hr>
+	<div class="instructContainer" *ngIf="!previewImge">
+		<ul>
+			<li>Start with the minimum possible dose (like 0.05 ml of 1 μg/ml)</li>
+			<li>Each subsequent dose should be doubled (or should be increased in a geometric proportion, i.e., the
+				quotient of two subsequent doses should be constant)</li>
+			<li>When the first measurable response (a response that can be measured e.g., at least 5 mm height, at least
+				10 mg force) is achieved, repeat the same dose and see whether you get a reproducible response. This
+				proves the reproducibility of the response and proper acclimatization of the tissue to in-vitro
+				conditions.</li>
+			<li>Record the responses of geometrically increasing doses till the maximum response is achieved (the
+				subsequent doses give equal responses).</li>
+			<li>Ideal doses are 2 µg/ml (0.05 to 0.8ml), 5 µg/ml (0.05 to 0.8ml), 10 µg/ml (0.8ml), 20 µg/ml (0.8ml), 40
+				µg/ml (0.8ml)</li>
+			<li>Once the maximum response is achieved, do not repeatedly expose the tissue to maximal dose or higher
+				doses. Such repeated exposures may affect the responsiveness of the tissue.</li>
+
+			<li>The capacity of the organ tube is 10 ml.</li>
+		</ul>
+
+	</div>
+
+</div>
+<div class="hintDiv" *ngIf="previewImge">
+	<h2 class="head">Preview Image <span (click)="previewimagecloseBtn()" class="instclose">&times;</span></h2>
+	<hr>
+
+	<div class="instructContainer" style="z-index: 999;">
+		<img [src]='imagename' />
+
+	</div>
+</div>
+
+<div id="myModal" class="modal" #modal>
+	<!-- Modal content -->
+	<div class="modal-content">
+
+		<img style="text-align: end" src='../../../../../../assets/images/computer.png' />
+		<span #closeBtnref (click)="closeBtn1()" class="close">&times;</span>
+	</div>
+</div>

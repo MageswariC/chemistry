@@ -1,0 +1,56 @@
+
+
+.nav-pills .pillLink{
+    background-color: gray;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 2px 14px;
+    margin-left: 13px;
+}
+
+.nav-pills .pillLinkActive {
+    color: #fff;
+    background-color: #e68a00;
+}
+
+.button {
+    margin-top: 7px;
+    margin-left: 9px;
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    width: 0;
+    height: 15px;
+    border-color: transparent transparent transparent white;
+    transition: 100ms all ease;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 7px 0px 5px 13px;
+  
+    &.paused {
+        border-style: double;
+        border-width: 0px 0 0px 13px;
+    }
+  
+    &:hover {
+      border-color: transparent transparent transparent white;
+    }
+  }
+  
+.container{
+    display: grid;
+    grid-template-columns: 223px 20px 100px;
+}
+.btnCon{
+    width:30px;
+    // line-height: 2;
+    // padding-left: 6px;
+    background: gray;
+}
+.btnCon:hover{
+    background: #e68a00;
+}
+
+
+ 

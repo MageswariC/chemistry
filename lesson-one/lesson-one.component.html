@@ -1,0 +1,21 @@
+<div class="container hor-spacing">
+    <div>You have selected the experiment</div>
+    <h2 class="header-color hor-spacing">Determination of PD<sub>2</sub> of Histamine Guinea pig ileum</h2>
+    <hr width="100%" />
+    <div class="hor-spacing content">
+        <span>Objectives</span>
+        <ul>
+            <li>To record the dose response curve for histamine on an isolated piece of guinea pig ileum</li>
+            <li>To plot the log-molar concentration vs. percent response curves for histamine</li>
+            <li>To determine the half maximal effective concentration (EC50) of histamine for guinea pig ileum</li>
+            <li>To determine the PD2 value of histamine on guinea pig ileum</li>
+        </ul>
+    </div>
+    <div class="hor-spacing">
+        <button mat-raised-button (click)="initExamMode()" class="float-r " [ngClass]="routeAnimationsElements">Click
+            Next To Continue Exam Mode </button>
+        <button mat-raised-button (click)="initTutorialMode()" class="float-r mr-1"
+            [ngClass]="routeAnimationsElements">Click
+            Next To Continue Tutorial Mode</button>
+    </div>
+</div>

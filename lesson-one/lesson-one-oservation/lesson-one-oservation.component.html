@@ -1,0 +1,64 @@
+<section [formGroup]="observationForm">
+    <div class="table-container">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="d-flex">
+                    <th  class="col-1">SI.No</th>
+                    <th  class="col-3">Drug / Procedure</th>
+                    <th  class="col-2">HR (beats/min)</th>
+                    <th  class="col-2">Mean BP(mm Hg)</th>
+                    <th  class="col-4">Remarks</th>
+                </tr>
+            </thead>
+            <tbody formArrayName="observationTable" class="overflow-auto">
+                <ng-container *ngFor="let observation of observationArray.controls; let i=index; let isLast = last">
+                    <tr [formGroupName]='i' class="d-flex">
+                        <td class="col-1">{{i+1}}</td>
+                        <td class="col-3"><select id="inputState" class="form-control" formControlName="procedure" (change)="addObservationRow(isLast)">
+													<option *ngFor="let drug of drugs;">{{drug.drug_name}}</option>
+												</select></td>
+                        <td class="col-2"><input type='number' formControlName="hr" class="form-control"></td>
+                        <td class="col-2"><input type='number' formControlName="meanBp" class="form-control"></td>
+                        <td  class="col-4"><textarea formControlName="remarks" style="resize: none;" class="overflow-auto"></textarea></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+    <div class="footerFormContainer">
+        <div>
+            <label class="mr-2">Basel HR(bpm)</label>
+            <input type="number" formControlName="basalHR" />
+        </div>
+        <div>
+            <label class="mr-2">Basel Bp(mmHg)</label>
+            <input type="number" formControlName="basalBp" />
+        </div>
+        <div>
+            <button (click)="openModel()" data-toggle="modal" data-target="#exampleModalLong">Conclusion</button>
+        </div>
+    </div>
+</section>
+
+
+  
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Type your conclusions here</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <textarea class="overflow-auto"   ></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary center">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

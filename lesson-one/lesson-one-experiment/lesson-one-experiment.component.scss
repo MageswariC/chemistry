@@ -1,0 +1,334 @@
+.con{
+  position: relative;
+  display: grid;
+  height: 100%;
+  grid-template-rows: 60% 30% 10%;
+  @media only screen and (min-height: 610px) {
+    grid-template-rows: 65% 25% 10%;
+  }
+  @media only screen and (min-height: 710px) {
+    grid-template-rows: 63% 27% 10%;
+  }
+}
+.hintDiv{
+  background: white;
+  z-index: 999;
+   position: absolute; 
+   top:0;
+   height: 100%;
+   width: 100%;
+
+}
+.canvasContainer{
+  position: relative;
+  background: white;
+  overflow: hidden;
+  canvas{
+    margin-top: -20px;
+   
+  }
+}
+.drugDoseContainer{
+  display: grid;
+  grid-template-rows: auto auto;
+  background: #80808017;
+  z-index: 1;
+  
+}
+.instclose{
+  color: #aaaaaa;
+    font-size: 25px;
+    margin-right: 34px;
+    font-weight: bold;
+    text-align: end;
+    color: #283593;
+    float: right;
+    cursor: pointer;
+}
+.innerTow{
+  display: grid;
+  grid-template-columns: 1fr 2.5fr 1fr;
+  padding: 13px 0 7px;
+  margin-top: 7px;
+}
+.dogNo{
+  justify-self: start;
+}
+.btnsContainer{
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  align-items: center;
+  z-index: 11;
+}
+.btnbtn{
+  margin-left: 10px;
+  padding: 5px 20px;
+    font-size: 14px;
+    color: #5a6268;
+    font-weight: 500;
+   color: white;
+   background: #283593;
+}
+.whitebtnbtn{
+  margin-left: 10px;
+  padding: 5px 20px;
+    font-size: 14px;
+    font-weight: 500;
+   color: #283593;
+   background: white;
+   border: 1px solid  #283593;
+   &:not(:disabled):hover{
+    color: white;
+    background: #283593;
+   }
+}
+.custumdrop{
+  padding: 0px; border:none;
+  width: 92%;
+}
+.custumdrop a{
+  border: 1px solid #2835934a;
+  text-align: center;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: #283593;
+  cursor: pointer;
+}
+.custumdrop a:hover{
+  text-align: center;
+  color: #283593;
+
+}
+.innerdrugDoseContainer{
+  display: grid;
+  position: relative;
+  grid-template-columns: 2.5fr 2fr 2fr;
+  padding-left: 19px;
+}
+.instBook{
+  position: absolute;
+  right: 12px;
+  top: -78px;
+}
+.instBook img{
+  width: 100px;
+  height: 100px;
+}
+.inpt{
+ 
+  width: 82px;
+  margin-left: 12px;
+  border: 1px solid #283593;
+  color:#283593;
+}
+.btnoper{
+  border-radius: 50%;
+    padding: 0;
+    font-size: 17px;
+    width: 30px;
+    height: 30px;
+    line-height: 1;
+    // border: 3px solid #00000080;
+}
+.custumTabContent{
+    background: white;
+      height: 392px;
+      border-bottom: 1px solid #dee2e6;
+      border-left: 1px solid #dee2e6;
+      border-right: 1px solid #dee2e6;
+  }
+  .custumViewSatge{
+    border: none;
+  }
+  .head{
+    padding: 12px 0;
+    margin-left: 10px;
+    color: #283593;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  .labl{
+    font-size: 14px;
+    color: #5a6268;
+    font-weight: 500;
+  }
+  .instructContainer{
+    overflow: scroll;
+    height: 100%;
+  }
+  .instructContainer ul{
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    list-style-type: decimal;
+    list-style: none; counter-reset: li
+  }
+  .instructContainer ul li{
+    margin: 6px 49px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000a6;
+    counter-increment: li
+  }
+  .instructContainer ul li::before {
+    content: '(' counter(li); color: #283593;
+    display: inline-block; width: 1em; margin-left: -1.5em;
+    margin-right: 0.5em; text-align: right; direction: rtl
+  }
+#canvasScroller{
+  // position: absolute;
+  // bottom: 73px;
+  // left: 151px;
+  // width: 72%;
+  // display: block;
+  
+}
+.blockerContainer{
+  position: relative;
+  display: inline;
+
+}
+.blockerPopup{
+  position: absolute;
+  bottom: 40px;
+  left: 0px;
+  width: 281px;
+  will-change: transform;
+  background: lightgrey;
+  padding: 11px 9px;
+}
+.blockerForm{
+  background: white;
+  padding: 17px 22px;
+  border-radius: 12px;
+}
+.custom-checkbox input {
+  display: none;
+}
+
+.custom-checkbox span {
+  border: 1px solid #7e8a94 !important;
+  float: right;
+  height: 23px;
+  width: 23px;
+  border-radius: 5px;
+  // cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-checkbox:hover span,
+.custom-checkbox input:checked + span {
+  border: 3px solid #283593 !important;
+}
+
+.custom-checkbox input:checked + span:before {
+  content: "✔";
+}
+.checkDiv{
+  display: grid;
+    justify-content: center;
+    align-self: center;
+}
+ .blockerBtn{
+  width: 100%;
+  margin-top: 6px;
+  border-radius: 10px;
+  padding: 7px 20px;
+  font-size: 13px;
+  color: #283593;
+  font-weight: 500;
+  background: white;
+ }
+ .drugDrop{
+   width: 242px;
+ }
+
+ .btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle{
+  background-color: #283593d4;
+  border-color: #283593d4;
+ }
+ 
+ .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  // background-color: rgb(0,0,0); /* Fallback color */
+  // background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 3px solid #283593;
+  width: 40vw;
+  height: 22vw;
+  top: 106px;
+  flex-direction: row !important;
+  img{
+    width: 100%;
+    height: 92%;
+    object-fit: contain;
+  }
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  /* float: left; */
+  font-size: 28px;
+  font-weight: bold;
+  text-align: end;
+  color: #283593;
+  float: right;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.custom-file-inputt::-webkit-file-upload-button {
+  // visibility: hidden;
+}
+.custom-file-inputt::before {
+  content: '  View  ';
+  display: inline-block;
+  border: 1px solid #283593;
+  border-radius: 3px;
+  padding: 6px 8px;
+  outline: none;
+  white-space: nowrap;
+  // -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 13px;
+  color: #283593;
+}
+.custumInput{
+  height: 28px;
+    text-align: center;
+}
+.drugHeader{
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+// .custom-file-input:hover::before {
+//   border-color: black;
+// }
+// .custom-file-input:active::before {
+//   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+// }

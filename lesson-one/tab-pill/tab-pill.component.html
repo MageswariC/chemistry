@@ -1,0 +1,71 @@
+<div class="container" style="height: 83vh;">
+  <div class=" custumViewSatge">
+    <div class="">
+      <ul class="nav nav-tabs">
+        <li class="nav-item ">
+          <a
+            class="nav-link active custumNavItem"
+            data-toggle="tab"
+            href="#intro"
+            (click)="introTab()"
+            >INTRODUCTION</a
+          >
+        </li>
+        <li class="nav-item ">
+          <a
+            class="nav-link custumNavItem"
+            data-toggle="tab"
+            href="#expri"
+            (click)="introTab()"
+            >EXPERIMENT</a
+          >
+        </li>
+        <li class="nav-item ">
+          <a
+            class="nav-link custumNavItem"
+            data-toggle="tab"
+            href="#obser"
+            (click)="introTab()"
+            >OBSERVATION</a
+          >
+        </li>
+      </ul>
+
+      <div class="tab-content custumTabContent">
+        <div
+          id="intro"
+          #intro
+          class="tab-pane fade in show active custumtabpane active"
+        >
+          <lesson-one-intro *ngIf="selectedTab === 'intro'"></lesson-one-intro>
+          <lesson-one-objective
+            *ngIf="selectedTab === 'objectives'"
+          ></lesson-one-objective>
+          <lesson-one-meterial-req
+            *ngIf="selectedTab === 'meterial_req'"
+          ></lesson-one-meterial-req>
+          <lesson-one-procedure
+            *ngIf="selectedTab === 'procedure'"
+          ></lesson-one-procedure>
+          <lesson-one-precaution
+            *ngIf="selectedTab === 'precaution'"
+          ></lesson-one-precaution>
+          <leson-one-tip *ngIf="selectedTab === 'tips'"></leson-one-tip>
+
+          <div style="position:absolute; bottom: 5px;">
+            <tabs-container
+              [introBottom]="introBottom"
+              (onClick)="tabClick($event)"
+            ></tabs-container>
+          </div>
+        </div>
+        <div id="expri" class="tab-pane fade custumExperi">
+          <lesson-one-experiment></lesson-one-experiment>
+        </div>
+        <div id="obser" class="tab-pane fade" style="height:100%">
+          <lesson-one-oservation></lesson-one-oservation>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

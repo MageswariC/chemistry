@@ -1,0 +1,22 @@
+
+
+<div class="container">
+    <div>
+    <ul class="nav nav-pills">
+        <ng-container *ngFor = "let pill of pillhead">
+            <li class="nav-item "><a class="nav-link pillLink" [ngClass]="{'pillLinkActive':pill.title === activeIndexId}" data-toggle="pill" (click) = "changeTab(pill.title)">{{pill.title}}</a></li>
+        </ng-container>
+       
+     
+    </ul>
+</div>
+<div style="border-left: 2px solid #e68a00;">
+
+</div>
+    <div class="btnCon">
+       <button class='button paused' [class.paused] = "paused == true" (click) = "checkPause()"></button>
+       
+    </div>
+    
+    
+  </div>
